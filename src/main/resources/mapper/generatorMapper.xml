@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modeush.amazon.dao.GeneratorDao" >
+    <resultMap id="BaseResultMap" type="com.modeush.amazon.entity.GeneratorEntity" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="country" property="country" jdbcType="VARCHAR" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="gender" property="gender" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+        <result column="ssn" property="ssn" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="country_code" property="countryCode" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="tropical_zodiac" property="tropicalZodiac" jdbcType="VARCHAR" />
+        <result column="company" property="company" jdbcType="VARCHAR" />
+        <result column="occupation" property="occupation" jdbcType="VARCHAR" />
+        <result column="height" property="height" jdbcType="VARCHAR" />
+        <result column="weight" property="weight" jdbcType="VARCHAR" />
+        <result column="blood_type" property="bloodType" jdbcType="VARCHAR" />
+        <result column="user_type" property="userType" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, country, user_name, gender, address, ssn, phone, country_code, birthday, age,
+        tropical_zodiac, company, occupation, height, weight, blood_type, user_type,status
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from az_user_basic_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectAllGenetorEntity" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from az_user_basic_info where status =0
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from az_user_basic_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.modeush.amazon.entity.GeneratorEntity" >
+        insert into az_user_basic_info (id, country, user_name,
+        gender, address, ssn,
+        phone, country_code, birthday,
+        age, tropical_zodiac, company,
+        occupation, height, weight,
+        blood_type, user_type,email,password,status)
+        values (#{id,jdbcType=INTEGER}, #{country,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+        #{gender,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{ssn,jdbcType=VARCHAR},
+        #{phone,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR},
+        #{age,jdbcType=VARCHAR}, #{tropicalZodiac,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR},
+        #{occupation,jdbcType=VARCHAR}, #{height,jdbcType=VARCHAR}, #{weight,jdbcType=VARCHAR},
+        #{bloodType,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{status,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.modeush.amazon.entity.GeneratorEntity" >
+        insert into az_user_basic_info
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="country != null" >
+                country,
+            </if>
+            <if test="userName != null" >
+                user_name,
+            </if>
+            <if test="gender != null" >
+                gender,
+            </if>
+            <if test="address != null" >
+                address,
+            </if>
+            <if test="ssn != null" >
+                ssn,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="countryCode != null" >
+                country_code,
+            </if>
+            <if test="birthday != null" >
+                birthday,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="tropicalZodiac != null" >
+                tropical_zodiac,
+            </if>
+            <if test="company != null" >
+                company,
+            </if>
+            <if test="occupation != null" >
+                occupation,
+            </if>
+            <if test="height != null" >
+                height,
+            </if>
+            <if test="weight != null" >
+                weight,
+            </if>
+            <if test="bloodType != null" >
+                blood_type,
+            </if>
+            <if test="userType != null" >
+                user_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="country != null" >
+                #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null" >
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="ssn != null" >
+                #{ssn,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null" >
+                #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null" >
+                #{birthday,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="tropicalZodiac != null" >
+                #{tropicalZodiac,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null" >
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="occupation != null" >
+                #{occupation,jdbcType=VARCHAR},
+            </if>
+            <if test="height != null" >
+                #{height,jdbcType=VARCHAR},
+            </if>
+            <if test="weight != null" >
+                #{weight,jdbcType=VARCHAR},
+            </if>
+            <if test="bloodType != null" >
+                #{bloodType,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null" >
+                #{userType,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.modeush.amazon.entity.GeneratorEntity" >
+        update az_user_basic_info
+        <set >
+            <if test="country != null" >
+                country = #{country,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null" >
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null" >
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null" >
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="ssn != null" >
+                ssn = #{ssn,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="countryCode != null" >
+                country_code = #{countryCode,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null" >
+                birthday = #{birthday,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="tropicalZodiac != null" >
+                tropical_zodiac = #{tropicalZodiac,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null" >
+                company = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="occupation != null" >
+                occupation = #{occupation,jdbcType=VARCHAR},
+            </if>
+            <if test="height != null" >
+                height = #{height,jdbcType=VARCHAR},
+            </if>
+            <if test="weight != null" >
+                weight = #{weight,jdbcType=VARCHAR},
+            </if>
+            <if test="bloodType != null" >
+                blood_type = #{bloodType,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null" >
+                user_type = #{userType,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.modeush.amazon.entity.GeneratorEntity" >
+        update az_user_basic_info
+        set country = #{country,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
+        gender = #{gender,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        ssn = #{ssn,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        country_code = #{countryCode,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=VARCHAR},
+        age = #{age,jdbcType=VARCHAR},
+        tropical_zodiac = #{tropicalZodiac,jdbcType=VARCHAR},
+        company = #{company,jdbcType=VARCHAR},
+        occupation = #{occupation,jdbcType=VARCHAR},
+        height = #{height,jdbcType=VARCHAR},
+        weight = #{weight,jdbcType=VARCHAR},
+        blood_type = #{bloodType,jdbcType=VARCHAR},
+        user_type = #{userType,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

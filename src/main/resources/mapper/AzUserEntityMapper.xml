@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modeush.amazon.dao.AzUserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.modeush.amazon.entity.AzUserEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="mac" property="mac" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="vm_id" property="vmId" jdbcType="VARCHAR" />
+    <result column="browser" property="browser" jdbcType="VARCHAR" />
+    <result column="basic_info_id" property="basicInfoId" jdbcType="INTEGER" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
+    <result column="email_id" property="emailId" jdbcType="INTEGER" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="credit_card_id" property="creditCardId" jdbcType="INTEGER" />
+    <result column="gift_card_id" property="giftCardId" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="upgrade" property="upgrade" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, mac, ip, vm_id, browser, basic_info_id, address_id, email_id, email, credit_card_id, 
+    gift_card_id, level, upgrade, status, create_time, update_time,country
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.modeush.amazon.entity.AzUserEntity" >
+    insert into az_user (id, mac, ip, 
+      vm_id, browser, basic_info_id, 
+      address_id, email_id, email, 
+      credit_card_id, gift_card_id, level, 
+      upgrade, status, create_time, 
+      update_time,country)
+    values (#{id,jdbcType=INTEGER}, #{mac,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{vmId,jdbcType=VARCHAR}, #{browser,jdbcType=VARCHAR}, #{basicInfoId,jdbcType=INTEGER}, 
+      #{addressId,jdbcType=INTEGER}, #{emailId,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{creditCardId,jdbcType=INTEGER}, #{giftCardId,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, 
+      #{upgrade,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=VARCHAR},#{country,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.modeush.amazon.entity.AzUserEntity" >
+    insert into az_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="mac != null" >
+        mac,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="vmId != null" >
+        vm_id,
+      </if>
+      <if test="browser != null" >
+        browser,
+      </if>
+      <if test="basicInfoId != null" >
+        basic_info_id,
+      </if>
+      <if test="addressId != null" >
+        address_id,
+      </if>
+      <if test="emailId != null" >
+        email_id,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="creditCardId != null" >
+        credit_card_id,
+      </if>
+      <if test="giftCardId != null" >
+        gift_card_id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="upgrade != null" >
+        upgrade,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mac != null" >
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="vmId != null" >
+        #{vmId,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="basicInfoId != null" >
+        #{basicInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="emailId != null" >
+        #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="creditCardId != null" >
+        #{creditCardId,jdbcType=INTEGER},
+      </if>
+      <if test="giftCardId != null" >
+        #{giftCardId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="upgrade != null" >
+        #{upgrade,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.modeush.amazon.entity.AzUserEntity" >
+    update az_user
+    <set >
+      <if test="mac != null" >
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="vmId != null" >
+        vm_id = #{vmId,jdbcType=VARCHAR},
+      </if>
+      <if test="browser != null" >
+        browser = #{browser,jdbcType=VARCHAR},
+      </if>
+      <if test="basicInfoId != null" >
+        basic_info_id = #{basicInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=INTEGER},
+      </if>
+      <if test="emailId != null" >
+        email_id = #{emailId,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="creditCardId != null" >
+        credit_card_id = #{creditCardId,jdbcType=INTEGER},
+      </if>
+      <if test="giftCardId != null" >
+        gift_card_id = #{giftCardId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="upgrade != null" >
+        upgrade = #{upgrade,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.modeush.amazon.entity.AzUserEntity" >
+    update az_user
+    set mac = #{mac,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      vm_id = #{vmId,jdbcType=VARCHAR},
+      browser = #{browser,jdbcType=VARCHAR},
+      basic_info_id = #{basicInfoId,jdbcType=INTEGER},
+      address_id = #{addressId,jdbcType=INTEGER},
+      email_id = #{emailId,jdbcType=INTEGER},
+      email = #{email,jdbcType=VARCHAR},
+      credit_card_id = #{creditCardId,jdbcType=INTEGER},
+      gift_card_id = #{giftCardId,jdbcType=INTEGER},
+      level = #{level,jdbcType=TINYINT},
+      upgrade = #{upgrade,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

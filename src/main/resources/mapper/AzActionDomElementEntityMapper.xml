@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.modeush.amazon.dao.AzActionDomElementEntityMapper">
+  <resultMap id="BaseResultMap" type="com.modeush.amazon.entity.AzActionDomElementEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="group_id" jdbcType="INTEGER" property="groupId" />
+    <result column="action_id" jdbcType="INTEGER" property="actionId" />
+    <result column="element_path" jdbcType="VARCHAR" property="elementPath" />
+    <result column="is_delete" jdbcType="TINYINT" property="isDelete" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="element_name" jdbcType="VARCHAR" property="elementName" />
+    <result column="request_url" jdbcType="VARCHAR" property="requestUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, group_id, action_id, element_path, is_delete, create_time, update_time, element_name, 
+    request_url
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from az_action_dom_element
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectGroupDomElement" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from az_action_dom_element
+    where group_id = #{groupId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from az_action_dom_element
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.modeush.amazon.entity.AzActionDomElementEntity">
+    insert into az_action_dom_element (id, group_id, action_id, 
+      element_path, is_delete, create_time, 
+      update_time, element_name, request_url
+      )
+    values (#{id,jdbcType=BIGINT}, #{groupId,jdbcType=INTEGER}, #{actionId,jdbcType=INTEGER}, 
+      #{elementPath,jdbcType=VARCHAR}, #{isDelete,jdbcType=TINYINT}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT}, #{elementName,jdbcType=VARCHAR}, #{requestUrl,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.modeush.amazon.entity.AzActionDomElementEntity">
+    insert into az_action_dom_element
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="actionId != null">
+        action_id,
+      </if>
+      <if test="elementPath != null">
+        element_path,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="elementName != null">
+        element_name,
+      </if>
+      <if test="requestUrl != null">
+        request_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="actionId != null">
+        #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="elementPath != null">
+        #{elementPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="elementName != null">
+        #{elementName,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.modeush.amazon.entity.AzActionDomElementEntity">
+    update az_action_dom_element
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=INTEGER},
+      </if>
+      <if test="actionId != null">
+        action_id = #{actionId,jdbcType=INTEGER},
+      </if>
+      <if test="elementPath != null">
+        element_path = #{elementPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="elementName != null">
+        element_name = #{elementName,jdbcType=VARCHAR},
+      </if>
+      <if test="requestUrl != null">
+        request_url = #{requestUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.modeush.amazon.entity.AzActionDomElementEntity">
+    update az_action_dom_element
+    set group_id = #{groupId,jdbcType=INTEGER},
+      action_id = #{actionId,jdbcType=INTEGER},
+      element_path = #{elementPath,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      element_name = #{elementName,jdbcType=VARCHAR},
+      request_url = #{requestUrl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

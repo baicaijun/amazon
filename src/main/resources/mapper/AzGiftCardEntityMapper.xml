@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.modeush.amazon.dao.AzGiftCardEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.modeush.amazon.entity.AzGiftCardEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="quota_total" property="quotaTotal" jdbcType="DECIMAL" />
+    <result column="quota_left" property="quotaLeft" jdbcType="DECIMAL" />
+    <result column="bonus_code" property="bonusCode" jdbcType="VARCHAR" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, number, password, quota_total, quota_left, bonus_code, sign, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_gift_card
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_gift_card
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.modeush.amazon.entity.AzGiftCardEntity" >
+    insert into az_gift_card (id, number, password, 
+      quota_total, quota_left, bonus_code, 
+      sign, status)
+    values (#{id,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{quotaTotal,jdbcType=DECIMAL}, #{quotaLeft,jdbcType=DECIMAL}, #{bonusCode,jdbcType=VARCHAR}, 
+      #{sign,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.modeush.amazon.entity.AzGiftCardEntity" >
+    insert into az_gift_card
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="quotaTotal != null" >
+        quota_total,
+      </if>
+      <if test="quotaLeft != null" >
+        quota_left,
+      </if>
+      <if test="bonusCode != null" >
+        bonus_code,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaTotal != null" >
+        #{quotaTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaLeft != null" >
+        #{quotaLeft,jdbcType=DECIMAL},
+      </if>
+      <if test="bonusCode != null" >
+        #{bonusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.modeush.amazon.entity.AzGiftCardEntity" >
+    update az_gift_card
+    <set >
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaTotal != null" >
+        quota_total = #{quotaTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaLeft != null" >
+        quota_left = #{quotaLeft,jdbcType=DECIMAL},
+      </if>
+      <if test="bonusCode != null" >
+        bonus_code = #{bonusCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.modeush.amazon.entity.AzGiftCardEntity" >
+    update az_gift_card
+    set number = #{number,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      quota_total = #{quotaTotal,jdbcType=DECIMAL},
+      quota_left = #{quotaLeft,jdbcType=DECIMAL},
+      bonus_code = #{bonusCode,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      status = #{status,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
